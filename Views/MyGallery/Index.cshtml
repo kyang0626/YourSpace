@@ -1,0 +1,29 @@
+@model YourSpace.Models.PhotoGenreViewModel;
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+<h1>Gallery</h1>
+<p>
+    <a asp-action="Create">Upload A Photo</a>
+</p>
+<div class="gallery-container">
+
+@foreach (var item in Model.Photos)
+{
+    <div class="card" style="width: 18rem; float: left; margin: 5px 15px;">
+        <img style="height: 250px; width: 286px;" src="@item.URL" class="card-img-top" alt="...">
+        <div style="height: 100px;" class="card-body">
+        <h5 class="card-title">@item.Title</h5>
+        <p style="font-size:14px;"class="card-text">@item.Description</p>
+            <div class="card-edit">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div> 
+        </div>
+    </div>
+}
+</div>
+
+
